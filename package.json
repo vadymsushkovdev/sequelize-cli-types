@@ -1,0 +1,36 @@
+{
+  "name": "sequelize-cli-types",
+  "version": "0.0.1",
+  "description": "Sequelize CLI for TS",
+  "author": "Vadym Sushkov <vadymsushkovdev@gmail.com>",
+  "bin": {
+    "sequelize": "./src/components/Commands/initialization.commands.ts"
+  },
+  "scripts": {
+    "build": "tsc --skipLibCheck",
+    "start": "ts-node ./src/components/Commands/initialization.commands.ts"
+  },
+  "files": [
+    "src"
+  ],
+  "dependencies": {
+    "@types/umzug": "2.3.0",
+    "commander": "7.2.0",
+    "fs-extra": "10.0.0",
+    "path": "0.12.7",
+    "pg": "latest",
+    "pg-hstore": "latest",
+    "sequelize": "6.6.2",
+    "ts-node": "10.0.0",
+    "typescript": "4.3.2"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "9.0.11",
+    "eslint": "7.22.0",
+    "eslint-config-airbnb-base": "14.2.0",
+    "eslint-config-airbnb-typescript": "11.0.0",
+    "eslint-config-prettier": "6.12.0",
+    "eslint-plugin-import": "2.22.1",
+    "prettier": "2.3.1"
+  }
+}
