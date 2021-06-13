@@ -1,3 +1,5 @@
+#!/usr/bin/env ts-node
+
 import { Command } from "commander";
 import { initExecutor } from "../Executors/initialization/init.executor";
 
@@ -7,12 +9,13 @@ commander.version("0.0.1").description("Sequelize CLI for TypeScript");
 
 commander
   .command("init")
+  .alias("i")
   .description("initialization CLI into the project")
   .action(initExecutor.init);
 commander
-  .command("init:config")
+  .command("init:config.example")
   .alias("i:con")
-  .description("initialization CLI config into the project")
+  .description("initialization CLI config.example into the project")
   .action(initExecutor.initConfig);
 commander
   .command("init:migrations")
@@ -29,3 +32,5 @@ commander
   .alias("i:see")
   .description("initialization CLI seeders into the project")
   .action(initExecutor.initSeeders);
+
+commander.parse(process.argv);

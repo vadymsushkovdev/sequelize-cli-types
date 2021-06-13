@@ -15,7 +15,7 @@ export interface ISequelizeConfig {
   };
   production: {
     username: string;
-    password: string;
+    password: string | null;
     database: string;
     host: string;
     dialect: Dialect;
