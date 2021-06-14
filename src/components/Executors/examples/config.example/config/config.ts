@@ -5,21 +5,21 @@ export const sequelizeConfig: ISequelizeConfig = {
     username: 'user',
     password: null,
     database: 'db_development',
-    host: 'host',
+    host: 'host', //if you use a docker, it should be changed to the container name
     dialect: 'postgres',
   },
   test: {
     username: 'user',
     password: null,
     database: 'db_test',
-    host: '127.0.0.1',
+    host: 'host', //if you use a docker, it should be changed to the container name
     dialect: 'postgres',
   },
   production: {
     username: 'user',
     password: null,
     database: 'db_production',
-    host: '127.0.0.1',
+    host: 'host', //if you use a docker, it should be changed to the container name
     dialect: 'postgres',
   },
 };

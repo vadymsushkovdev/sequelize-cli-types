@@ -1,3 +1,9 @@
+/*
+-------------------------------------------------------------------------
+Do not change types, because in this case sequelize may not work properly
+-------------------------------------------------------------------------
+ */
+
 export interface ISequelizeConfig {
   development: {
     username: string;
