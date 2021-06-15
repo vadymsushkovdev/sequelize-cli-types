@@ -1,7 +1,7 @@
 /*
--------------------------------------------------------------------------
-Do not change types, because in this case sequelize may not work properly
--------------------------------------------------------------------------
+-----------------------------------------------------------------------------------
+Do not change types of config, because in this case sequelize may not work properly
+-----------------------------------------------------------------------------------
  */
 
 export interface ISequelizeConfig {
