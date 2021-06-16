@@ -1,7 +1,8 @@
 #!/usr/bin/env ts-node
 
+import "module-alias/register";
 import { Command } from "commander";
-import { initExecutor } from "../Executors/initialization/init.executor";
+import { initExecutor } from "@components/Executors/initialization/init.executor";
 
 const commander = new Command();
 

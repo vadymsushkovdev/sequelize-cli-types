@@ -1,7 +1,7 @@
 import * as fs from "fs-extra";
-import { pathConstant } from "../../../config/constants/path.constant";
-import { logAction } from "../../../config/logs/log.action";
-import { initializationMessages } from "../../../config/constants/logs.messages";
+import { pathConstant } from "@config/constants/path.constant";
+import { logAction } from "@config/logs/log.action";
+import { initializationMessages } from "@config/constants/logs.messages";
 
 class InitExecutor {
   public async init() {
