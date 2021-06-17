@@ -4,7 +4,7 @@
   "description": "Sequelize CLI for TS",
   "author": "Vadym Sushkov <vadymsushkovdev@gmail.com>",
   "bin": {
-    "sqlz": "./src/components/Commands/initialization.commands.ts"
+    "sqlz": "./src/components/Commands/commands.ts"
   },
   "scripts": {
     "build": "tsc --skipLibCheck",

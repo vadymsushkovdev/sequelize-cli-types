@@ -1,5 +1,0 @@
-|Error| The config file has not been created Message: ENOENT: no such file or directory, mkdir '/home/bandapixels/WebstormProjects/sequelize-cli-types-main/sequelize-cli-types/db/migrations' Tue Jun 15 2021 17:04:40 GMT+0300 (GMT+03:00)
-|Error| The config file has not been created Message: The argument 'mode' must be a 32-bit unsigned integer or an octal string. Received 'migrations' Tue Jun 15 2021 17:11:10 GMT+0300 (GMT+03:00)
-|Error| The config file has not been created Message: The argument 'mode' must be a 32-bit unsigned integer or an octal string. Received 'migrations' Tue Jun 15 2021 17:11:58 GMT+0300 (GMT+03:00)
-|Success| The config file has been created Tue Jun 15 2021 17:12:46 GMT+0300 (GMT+03:00)
-|Success| The config file has been created Tue Jun 15 2021 17:21:36 GMT+0300 (GMT+03:00)

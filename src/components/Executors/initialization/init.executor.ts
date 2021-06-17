@@ -4,13 +4,6 @@ import { logAction } from "@config/logs/log.action";
 import { initializationMessages } from "@config/constants/logs.messages";
 
 class InitExecutor {
-  public async init() {
-    await this.initConfig();
-    await this.initMigrations();
-    await this.initModels();
-    await this.initSeeders();
-  }
-
   public async initConfig() {
     try {
       await fs.copy(
@@ -58,7 +51,9 @@ class InitExecutor {
       console.error(err);
 
       await logAction(
-        initializationMessages.errorMessages.migrations + " Message: " + err.message
+        initializationMessages.errorMessages.migrations +
+          " Message: " +
+          err.message
       );
     }
   }
@@ -70,7 +65,7 @@ class InitExecutor {
           await fs.mkdir(`${pathConstant.userModelPath}`);
 
           console.log(
-            `Migrations has been initialized by directory ${pathConstant.userModelPath}.`
+            `Models has been initialized by directory ${pathConstant.userModelPath}.`
           );
 
           await logAction(initializationMessages.successMessages.models);
@@ -79,7 +74,7 @@ class InitExecutor {
           await fs.mkdir(`${pathConstant.userModelPath}`);
 
           console.log(
-            `Migrations has been initialized by directory ${pathConstant.userModelPath}.`
+            `Models has been initialized by directory ${pathConstant.userModelPath}.`
           );
 
           await logAction(initializationMessages.successMessages.models);
@@ -98,19 +93,19 @@ class InitExecutor {
     try {
       fs.stat(`${pathConstant.userDbPath}`, async function (err) {
         if (!err) {
-          await fs.mkdir(`${pathConstant.userModelPath}`);
+          await fs.mkdir(`${pathConstant.userSeederPath}`);
 
           console.log(
-            `Migrations has been initialized by directory ${pathConstant.userModelPath}.`
+            `Seeders has been initialized by directory ${pathConstant.userSeederPath}.`
           );
 
           await logAction(initializationMessages.successMessages.seeders);
         } else if (err.code === "ENOENT") {
           await fs.mkdir(`${pathConstant.userDbPath}`);
-          await fs.mkdir(`${pathConstant.userModelPath}`);
+          await fs.mkdir(`${pathConstant.userSeederPath}`);
 
           console.log(
-            `Migrations has been initialized by directory ${pathConstant.userModelPath}.`
+            `Seeders has been initialized by directory ${pathConstant.userModelPath}.`
           );
 
           await logAction(initializationMessages.successMessages.seeders);
@@ -120,10 +115,18 @@ class InitExecutor {
       console.error(err);
 
       await logAction(
-        initializationMessages.errorMessages.seeders + " Message: " + err.message
+        initializationMessages.errorMessages.seeders +
+          " Message: " +
+          err.message
       );
     }
   }
 }
 
 export const initExecutor = new InitExecutor();
+export const initialization = async () => {
+  await initExecutor.initConfig();
+  await initExecutor.initMigrations();
+  await initExecutor.initModels();
+  await initExecutor.initSeeders();
+};
