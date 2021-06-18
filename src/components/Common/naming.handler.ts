@@ -26,7 +26,7 @@ export const dateOfCreatingFile = () => {
   ].join("");
 };
 
-export const columnBuilder = (name: string, parameter: string) => {
+export const migrationColumnBuilder = (name: string, parameter: string) => {
   if (parameter === "str" ?? parameter === "string") {
     return (
       `\n       ${name}: {\n` +
@@ -37,7 +37,7 @@ export const columnBuilder = (name: string, parameter: string) => {
   if (parameter === "int" ?? parameter === "integer") {
     return (
       `\n       ${name}: {\n` +
-      `         type: Sequelize.NUMBER,\n` +
+      `         type: Sequelize.INTEGER,\n` +
       "      }"
     );
   };
@@ -49,3 +49,8 @@ export const columnBuilder = (name: string, parameter: string) => {
     );
   };
 };
+
+export const modelColumnBuilder = (name: string, parameter: Array<string>) => {
+
+};
+

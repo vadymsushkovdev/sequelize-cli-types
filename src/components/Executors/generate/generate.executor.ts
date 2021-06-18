@@ -2,9 +2,11 @@ import { createMigrationFile } from "@components/Executors/examples/templates/mi
 import { logAction } from "@config/logs/log.action";
 import { initializationMessages } from "@config/constants/logs.messages";
 import {
-  columnBuilder,
   endOfStringFromManyToOne,
+  migrationColumnBuilder,
+  modelColumnBuilder,
 } from "@components/Common/naming.handler";
+import { createModelFile } from "@components/Executors/examples/templates/models.template";
 
 class GenerateExecutor {
   public async generateMigration(tableName: string, parameters: Array<string>) {
@@ -13,7 +15,7 @@ class GenerateExecutor {
         return arr.split(":");
       });
       const columnData = separatedParameters.map((column) => {
-        return columnBuilder(column[0], column[1]) ?? "";
+        return migrationColumnBuilder(column[0], column[1]) ?? "";
       });
 
       createMigrationFile(tableName, columnData);
@@ -39,13 +41,20 @@ class GenerateExecutor {
     }
   }
 
-  public async generateModel(params: any, model: any) {
+  public async generateModel(modelName: string, parameters: Array<string>) {
     try {
+      const separatedParameters = parameters.map((arr) => {
+        return arr.split(":");
+      });
+      const columnData = separatedParameters.map((column) => {
+      //  return modelColumnBuilder(column[0], column[1]) ?? "";
+      });
+
+    //  createModelFile(modelName, columnData);
       console.log(
-        params.map((arr: string) => {
-          return arr.split(":");
-        }),
-        model
+        `The model file ${endOfStringFromManyToOne(
+          modelName.toLowerCase()
+        )} has been created.`
       );
     } catch (err) {
       console.error(err);
