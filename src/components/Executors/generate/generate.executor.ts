@@ -1,12 +1,22 @@
 import { createMigrationFile } from "@components/Executors/examples/templates/migrations.template";
 import { logAction } from "@config/logs/log.action";
 import { initializationMessages } from "@config/constants/logs.messages";
-import {endOfStringFromManyToOne} from "@components/Common/naming.handler";
+import {
+  columnBuilder,
+  endOfStringFromManyToOne,
+} from "@components/Common/naming.handler";
 
 class GenerateExecutor {
-  public async generateMigration(tableName: string) {
+  public async generateMigration(tableName: string, parameters: Array<string>) {
     try {
-      await createMigrationFile(tableName);
+      const separatedParameters = parameters.map((arr) => {
+        return arr.split(":");
+      });
+      const columnData = separatedParameters.map((column) => {
+        return columnBuilder(column[0], column[1]) ?? "";
+      });
+
+      createMigrationFile(tableName, columnData);
       console.log(
         `The migration file ${endOfStringFromManyToOne(
           tableName.toLowerCase()
@@ -31,9 +41,12 @@ class GenerateExecutor {
 
   public async generateModel(params: any, model: any) {
     try {
-      console.log(params.map((arr: string) => {
-        return arr.split(":")
-      }), model);
+      console.log(
+        params.map((arr: string) => {
+          return arr.split(":");
+        }),
+        model
+      );
     } catch (err) {
       console.error(err);
     }

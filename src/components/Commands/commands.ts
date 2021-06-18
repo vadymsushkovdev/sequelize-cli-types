@@ -37,17 +37,17 @@ commander
   .action(initExecutor.initSeeders);
 
 commander
-  .command("migration:generate <tableName>")
+  .command("migration:generate <tableName> <parameters...>")
   .alias("mig:gen")
   .description("Generation a new migration file into the project")
-  .action((tableName) => generateExecutor.generateMigration(tableName));
+  .action((tableName, parameters) => generateExecutor.generateMigration(tableName, parameters));
 commander
-  .command("model:generate <modelName> <params...>")
+  .command("model:generate <modelName> <parameters...>")
   .alias("mod:gen")
   .description("Generation a new model file into the project")
-  .action((modelName, params) => generateExecutor.generateModel(params, modelName));
+  .action((modelName, parameters) => generateExecutor.generateModel(parameters, modelName));
 commander
-  .command("seed:generate <seedName>")
+  .command("seed:generate <seedName> <parameters...>")
   .alias("see:gen")
   .description("Generation a new seed file into the project")
   .action(generateExecutor.generateSeed);
