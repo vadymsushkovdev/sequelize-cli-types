@@ -1,5 +1,5 @@
 export const defaultValue = {
   migration: {
-    defaultName: 'skeleton'
-  }
-}
+    defaultName: "skeleton",
+  },
+};

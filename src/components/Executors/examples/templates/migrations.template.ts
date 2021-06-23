@@ -1,11 +1,19 @@
 import fs from "fs";
 import { pathConstant } from "@config/constants/path.constant";
-import {dateOfCreatingFile, endOfStringFromManyToOne} from "@components/Common/naming.handler";
+import {
+  dateOfCreatingFile,
+  endOfStringFromManyToOne,
+} from "@components/Common/naming.handler";
 
-export const createMigrationFile = (tableName: string, parameters: Array<string>) => {
-  const fileName: string = `${dateOfCreatingFile()}-create-${endOfStringFromManyToOne(tableName.toLowerCase())}.ts`;
+export const createMigrationFile = (
+  tableName: string,
+  parameters: Array<string>
+) => {
+  const fileName: string = `${dateOfCreatingFile()}-create-${endOfStringFromManyToOne(
+    tableName.toLowerCase()
+  )}.ts`;
   const migrationCode: string =
-    "import Sequelize, { QueryInterface } from \"sequelize\";\n" +
+    'import Sequelize, { QueryInterface } from "sequelize";\n' +
     "\n" +
     "export default {\n" +
     "  up: async (queryInterface: QueryInterface): Promise<void> => {\n" +

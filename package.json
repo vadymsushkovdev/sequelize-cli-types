@@ -14,7 +14,6 @@
     "src"
   ],
   "dependencies": {
-    "@types/umzug": "2.3.0",
     "commander": "7.2.0",
     "fs-extra": "10.0.0",
     "module-alias": "2.2.2",
@@ -23,7 +22,8 @@
     "pg-hstore": "latest",
     "sequelize": "6.6.2",
     "ts-node": "10.0.0",
-    "typescript": "4.3.2"
+    "typescript": "4.3.2",
+    "umzug": "2.3.0"
   },
   "_moduleAliases": {
     "@config": "./src/config",
@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@types/fs-extra": "9.0.11",
+    "@types/umzug": "^2.3.0",
     "eslint": "7.22.0",
     "eslint-config-airbnb-base": "14.2.0",
     "eslint-config-airbnb-typescript": "11.0.0",

@@ -28,4 +28,4 @@ export interface ISequelizeConfig {
   };
 }
 
-type Dialect = 'postgres' | 'mysql';
+type Dialect = "postgres" | "mysql";

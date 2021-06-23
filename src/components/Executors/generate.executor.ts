@@ -4,7 +4,6 @@ import { initializationMessages } from "@config/constants/logs.messages";
 import {
   endOfStringFromManyToOne,
   migrationColumnBuilder,
-  modelColumnBuilder,
 } from "@components/Common/naming.handler";
 import { createModelFile } from "@components/Executors/examples/templates/models.template";
 
@@ -47,10 +46,10 @@ class GenerateExecutor {
         return arr.split(":");
       });
       const columnData = separatedParameters.map((column) => {
-      //  return modelColumnBuilder(column[0], column[1]) ?? "";
+        //  return modelColumnBuilder(column[0], column[1]) ?? "";
       });
 
-    //  createModelFile(modelName, columnData);
+      //  createModelFile(modelName, columnData);
       console.log(
         `The model file ${endOfStringFromManyToOne(
           modelName.toLowerCase()

@@ -1,25 +1,25 @@
-import { ISequelizeConfig } from './interfaces/interface.config';
+import { ISequelizeConfig } from "./interfaces/interface.config";
 
 export const sequelizeConfig: ISequelizeConfig = {
   development: {
-    username: 'user',
+    username: "user",
     password: null,
-    database: 'db_development',
-    host: 'host', //if you use a docker, it should be changed to the container name
-    dialect: 'postgres',
+    database: "db_development",
+    host: "host", //if you use a docker, it should be changed to the container name
+    dialect: "postgres",
   },
   test: {
-    username: 'user',
+    username: "user",
     password: null,
-    database: 'db_test',
-    host: 'host', //if you use a docker, it should be changed to the container name
-    dialect: 'postgres',
+    database: "db_test",
+    host: "host", //if you use a docker, it should be changed to the container name
+    dialect: "postgres",
   },
   production: {
-    username: 'user',
+    username: "user",
     password: null,
-    database: 'db_production',
-    host: 'host', //if you use a docker, it should be changed to the container name
-    dialect: 'postgres',
+    database: "db_production",
+    host: "host", //if you use a docker, it should be changed to the container name
+    dialect: "postgres",
   },
 };

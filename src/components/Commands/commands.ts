@@ -2,9 +2,13 @@
 
 import "module-alias/register";
 import { Command } from "commander";
-import {initExecutor, initialization} from "@components/Executors/initialization/init.executor";
-import {showLogs} from "@config/logs/log.action";
-import {generateExecutor} from "@components/Executors/generate/generate.executor";
+import {
+  initExecutor,
+  initialization,
+} from "@components/Executors/init.executor";
+import { showLogs } from "@config/logs/log.action";
+import { generateExecutor } from "@components/Executors/generate.executor";
+import {dbMigrationExecutor} from "@components/Executors/db.migration.executor";
 
 const commander = new Command();
 
@@ -40,17 +44,33 @@ commander
   .command("migration:generate <tableName> <parameters...>")
   .alias("mig:gen")
   .description("Generation a new migration file into the project")
-  .action((tableName, parameters) => generateExecutor.generateMigration(tableName, parameters));
+  .action((tableName, parameters) =>
+    generateExecutor.generateMigration(tableName, parameters)
+  );
 commander
   .command("model:generate <modelName> <parameters...>")
   .alias("mod:gen")
   .description("Generation a new model file into the project")
-  .action((modelName, parameters) => generateExecutor.generateModel(parameters, modelName));
+  .action((modelName, parameters) =>
+    generateExecutor.generateModel(parameters, modelName)
+  );
 commander
   .command("seed:generate <seedName> <parameters...>")
   .alias("see:gen")
   .description("Generation a new seed file into the project")
   .action(generateExecutor.generateSeed);
+
+commander
+  .command("db:migrate")
+  .alias("db:mig")
+  .description("Generation a new migration file into the project")
+  .action(dbMigrationExecutor.up);
+
+commander
+  .command("db:down")
+  .alias("db:d")
+  .description("Generation a new migration file into the project")
+  .action(dbMigrationExecutor.down);
 
 commander
   .command("logs")

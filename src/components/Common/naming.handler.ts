@@ -29,28 +29,24 @@ export const dateOfCreatingFile = () => {
 export const migrationColumnBuilder = (name: string, parameter: string) => {
   if (parameter === "str" ?? parameter === "string") {
     return (
-      `\n       ${name}: {\n` +
-      `         type: Sequelize.STRING,\n` +
-      "      }"
+      `\n       ${name}: {\n` + `         type: Sequelize.STRING,\n` + "      }"
     );
-  };
+  }
   if (parameter === "int" ?? parameter === "integer") {
     return (
       `\n       ${name}: {\n` +
       `         type: Sequelize.INTEGER,\n` +
       "      }"
     );
-  };
+  }
   if (parameter === "date") {
     return (
-      ` \n      ${name}: {\n` +
-      `         type: Sequelize.DATE,\n` +
-      "      }"
+      ` \n      ${name}: {\n` + `         type: Sequelize.DATE,\n` + "      }"
     );
-  };
+  }
 };
 
-export const modelColumnBuilder = (name: string, parameter: Array<string>) => {
-
-};
-
+export const modelColumnBuilder = (
+  name: string,
+  parameter: Array<string>
+) => {};
