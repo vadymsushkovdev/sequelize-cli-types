@@ -8,7 +8,7 @@ import {
 } from "@components/Executors/init.executor";
 import { showLogs } from "@config/logs/log.action";
 import { generateExecutor } from "@components/Executors/generate.executor";
-import {dbMigrationExecutor} from "@components/Executors/db.migration.executor";
+import { dbMigrationExecutor } from "@components/Executors/db.migration.executor";
 
 const commander = new Command();
 
@@ -20,7 +20,7 @@ commander
   .description("Initialization CLI dependencies into the project")
   .action(initialization);
 commander
-  .command("init:config.example")
+  .command("init:config")
   .alias("i:con")
   .description("Initialization CLI config into the project")
   .action(initExecutor.initConfig);
@@ -34,11 +34,13 @@ commander
   .alias("i:mod")
   .description("Initialization CLI models into the project")
   .action(initExecutor.initModels);
+/*
 commander
   .command("init:seeders")
   .alias("i:see")
   .description("Initialization CLI seeders into the project")
   .action(initExecutor.initSeeders);
+*/
 
 commander
   .command("migration:generate <tableName> <parameters...>")
@@ -52,25 +54,41 @@ commander
   .alias("mod:gen")
   .description("Generation a new model file into the project")
   .action((modelName, parameters) =>
-    generateExecutor.generateModel(parameters, modelName)
+    generateExecutor.generateModel(modelName, parameters)
   );
+/*
 commander
   .command("seed:generate <seedName> <parameters...>")
   .alias("see:gen")
   .description("Generation a new seed file into the project")
   .action(generateExecutor.generateSeed);
+*/
 
 commander
   .command("db:migrate")
   .alias("db:mig")
-  .description("Generation a new migration file into the project")
+  .description("Migrate all pending migration files")
   .action(dbMigrationExecutor.up);
-
 commander
   .command("db:down")
   .alias("db:d")
-  .description("Generation a new migration file into the project")
+  .description("Drop all database")
   .action(dbMigrationExecutor.down);
+commander
+  .command("db:specificdown <parameters...>")
+  .alias("db:sd")
+  .description("Drop one specific migration file")
+  .action((parameters) => dbMigrationExecutor.specificDown(parameters));
+commander
+  .command("db:pending")
+  .alias("db:p")
+  .description("Check all migration files that not executed")
+  .action(dbMigrationExecutor.pending);
+commander
+  .command("db:executed")
+  .alias("db:e")
+  .description("Check all migration files that executed")
+  .action(dbMigrationExecutor.executed);
 
 commander
   .command("logs")

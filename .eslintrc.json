@@ -1,54 +1,30 @@
 {
-    "env": {
-        "es2020": true,
-        "node": true,
-        "mocha": true,
-        "jest": true
-    },
-    "extends": [
-        "airbnb-base"
-    ],
     "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "extends": [
+        "eslint:recommended",
+        "prettier",
+        "plugin:@typescript-eslint/recommended",
+        "prettier/@typescript-eslint"
+    ],
+    "env": {
+        "browser": true,
+        "es6": true
+    },
     "parserOptions": {
-        "ecmaVersion": 11,
+        "ecmaFeatures": { "jsx": true },
+        "ecmaVersion": 2018,
+        "project": "./tsconfig.json",
         "sourceType": "module"
     },
-    "plugins": [
-        "@typescript-eslint"
-    ],
     "rules": {
-        "max-len": [
-            "error",
-            150
-        ],
-        "no-shadow": "off",
-        "import/no-unresolved": "off",
-        "no-useless-constructor": "off",
-        "no-unused-vars": "off",
-        "@typescript-eslint/no-unused-vars": [
-            "error"
-        ],
-        "import/extensions": "off",
-        "no-empty-function": "off",
-        "indent": [
-            "error",
-            2
-        ],
-        "arrow-body-style": "off",
-        "class-methods-use-this": "off",
-        "no-underscore-dangle": "off",
-        "consistent-return": "off",
-        "camelcase": "off"
-    },
-    "overrides": [
-        {
-            "files": [
-                "./src/main.ts",
-                "./src/components/app/app.module.ts"
-            ],
-            "rules": {
-                "no-console": "off"
-            }
-        }
-    ]
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/explicit-member-accessibility": "off",
+        "@typescript-eslint/member-ordering": "error",
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-unused-vars": "off",
+        "@typescript-eslint/prefer-interface": "off",
+        "no-console": "off",
+        "sort-keys": "warn"
+    }
 }

@@ -5,8 +5,11 @@ export const endOfStringFromManyToOne = (word: string) => {
   if (word.endsWith("es")) {
     return word.substring(0, word.length - 2);
   }
+  if (word.endsWith("s")) {
+    return word.substring(0, word.length - 1);
+  }
 
-  return word.substring(0, word.length - 1);
+  return word;
 };
 
 function format(i: number) {
@@ -27,26 +30,51 @@ export const dateOfCreatingFile = () => {
 };
 
 export const migrationColumnBuilder = (name: string, parameter: string) => {
-  if (parameter === "str" ?? parameter === "string") {
+  if (parameter === "str" || parameter === "string") {
     return (
-      `\n       ${name}: {\n` + `         type: Sequelize.STRING,\n` + "      }"
+      `\n      ${name}: {\n` + `        type: Sequelize.STRING,\n` + "      }"
     );
   }
-  if (parameter === "int" ?? parameter === "integer") {
+  if (parameter === "int" || parameter === "integer") {
     return (
-      `\n       ${name}: {\n` +
-      `         type: Sequelize.INTEGER,\n` +
-      "      }"
+      `\n      ${name}: {\n` + `        type: Sequelize.INTEGER,\n` + "      }"
     );
   }
   if (parameter === "date") {
     return (
-      ` \n      ${name}: {\n` + `         type: Sequelize.DATE,\n` + "      }"
+      ` \n     ${name}: {\n` + `        type: Sequelize.DATE,\n` + "      }"
     );
   }
+
+  throw new Error(`Unknown parameter ${parameter}`);
 };
 
-export const modelColumnBuilder = (
+export const modelColumnBuilder = (name: string, parameter: string) => {
+  if (parameter === "str" || parameter === "string") {
+    return `\n  ${name}: {\n` + `    type: DataTypes.STRING\n` + "  }";
+  }
+  if (parameter === "int" || parameter === "integer") {
+    return `\n  ${name}: {\n` + `    type: DataTypes.INTEGER\n` + "  }";
+  }
+  if (parameter === "date") {
+    return `\n  ${name}: {\n` + `    type: DataTypes.DATE\n` + "  }";
+  }
+
+  throw new Error(`Unknown parameter ${parameter}`);
+};
+
+export const modelInterfaceColumnBuilder = (
   name: string,
-  parameter: Array<string>
-) => {};
+  parameter: string
+) => {
+  if (parameter === "str" || parameter === "string") {
+    return `\n  ${name}: string`;
+  }
+  if (parameter === "int" || parameter === "integer") {
+    return `\n  ${name}: number`;
+  }
+  if (parameter === "date") {
+    return `\n  ${name}: Date`;
+  }
+  throw new Error(`Unknown parameter ${parameter}`);
+};

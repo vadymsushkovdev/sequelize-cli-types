@@ -12,7 +12,7 @@ class InitExecutor {
       );
 
       console.log(
-        `The config file has been added by directory ${pathConstant.userDbPath}/config. Set the file using your parameters.`
+        `The config file added by directory ${pathConstant.userDbPath}/config. Set the file using your parameters.`
       );
 
       await logAction(initializationMessages.successMessages.config);
@@ -32,7 +32,7 @@ class InitExecutor {
           await fs.mkdir(`${pathConstant.userMigrationPath}`);
 
           console.log(
-            `Migrations has been initialized by directory ${pathConstant.userMigrationPath}.`
+            `Migrations initialized by directory ${pathConstant.userMigrationPath}.`
           );
 
           await logAction(initializationMessages.successMessages.migrations);
@@ -41,7 +41,7 @@ class InitExecutor {
           await fs.mkdir(`${pathConstant.userMigrationPath}`);
 
           console.log(
-            `Migrations has been initialized by directory ${pathConstant.userMigrationPath}.`
+            `Migrations initialized by directory ${pathConstant.userMigrationPath}.`
           );
 
           await logAction(initializationMessages.successMessages.migrations);
@@ -63,9 +63,10 @@ class InitExecutor {
       fs.stat(`${pathConstant.userDbPath}`, async function (err) {
         if (!err) {
           await fs.mkdir(`${pathConstant.userModelPath}`);
+          await fs.mkdir(`${pathConstant.userModelPath}/interfaces`);
 
           console.log(
-            `Models has been initialized by directory ${pathConstant.userModelPath}.`
+            `Models initialized by directory ${pathConstant.userModelPath}.`
           );
 
           await logAction(initializationMessages.successMessages.models);
@@ -74,7 +75,7 @@ class InitExecutor {
           await fs.mkdir(`${pathConstant.userModelPath}`);
 
           console.log(
-            `Models has been initialized by directory ${pathConstant.userModelPath}.`
+            `Models initialized by directory ${pathConstant.userModelPath}.`
           );
 
           await logAction(initializationMessages.successMessages.models);
@@ -96,7 +97,7 @@ class InitExecutor {
           await fs.mkdir(`${pathConstant.userSeederPath}`);
 
           console.log(
-            `Seeders has been initialized by directory ${pathConstant.userSeederPath}.`
+            `Seeders initialized by directory ${pathConstant.userSeederPath}.`
           );
 
           await logAction(initializationMessages.successMessages.seeders);
@@ -105,7 +106,7 @@ class InitExecutor {
           await fs.mkdir(`${pathConstant.userSeederPath}`);
 
           console.log(
-            `Seeders has been initialized by directory ${pathConstant.userModelPath}.`
+            `Seeders initialized by directory ${pathConstant.userModelPath}.`
           );
 
           await logAction(initializationMessages.successMessages.seeders);
@@ -128,5 +129,5 @@ export const initialization = async () => {
   await initExecutor.initConfig();
   await initExecutor.initMigrations();
   await initExecutor.initModels();
-  await initExecutor.initSeeders();
+  // await initExecutor.initSeeders();
 };

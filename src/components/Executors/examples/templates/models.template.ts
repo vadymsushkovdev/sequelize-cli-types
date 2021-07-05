@@ -11,10 +11,12 @@ export const createModelFile = (
   )}.ts`;
   const modelCode: string =
     'import { DataTypes } from "sequelize";\n' +
-    'import connection from "";\n' +
+    'import connection from ""; //Enter your sequelize connect to database\n' +
     `import { I${endOfStringFromManyToOne(
       tableName
-    )}Model } from \"./interfaces/user.interface\";\n` +
+    )}Model } from \"./interfaces/${endOfStringFromManyToOne(
+      tableName
+    ).toLowerCase()}.interface\";\n` +
     "\n" +
     `export const ${endOfStringFromManyToOne(
       tableName
@@ -25,12 +27,41 @@ export const createModelFile = (
     `    type: DataTypes.INTEGER.UNSIGNED,\n` +
     "    autoIncrement: true,\n" +
     "    primaryKey: true,\n" +
-    "  },\n" +
+    "  }," +
     `${parameters}` +
     "\n});";
+
   fs.writeFile(
     `${pathConstant.userModelPath}/${fileName}`,
     modelCode,
+    async (err) => {
+      if (err) {
+        throw err;
+      }
+    }
+  );
+};
+
+export const createModelInterface = (
+  tableName: string,
+  parameters: Array<string>
+) => {
+  const fileName: string = `${endOfStringFromManyToOne(
+    tableName.toLowerCase()
+  )}.interface.ts`;
+  const interfaceCode: string =
+    'import { Model } from "sequelize";\n' +
+    "\n" +
+    `export interface I${endOfStringFromManyToOne(
+      tableName
+    )}Model extends Model {\n` +
+    "  id: number," +
+    `${parameters}` +
+    "\n}";
+
+  fs.writeFile(
+    `${pathConstant.userModelPath}/interfaces/${fileName}`,
+    interfaceCode,
     async (err) => {
       if (err) {
         throw err;

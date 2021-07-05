@@ -7,21 +7,21 @@ Do not change types of config, because in this case sequelize may not work prope
 export interface ISequelizeConfig {
   development: {
     username: string;
-    password: string | null;
+    password: string;
     database: string;
     host: string;
     dialect: Dialect;
   };
   test: {
     username: string;
-    password: string | null;
+    password: string;
     database: string;
     host: string;
     dialect: Dialect;
   };
   production: {
     username: string;
-    password: string | null;
+    password: string;
     database: string;
     host: string;
     dialect: Dialect;
@@ -29,3 +29,5 @@ export interface ISequelizeConfig {
 }
 
 type Dialect = "postgres" | "mysql";
+
+export type Mode = "development" | "production" | "test";
