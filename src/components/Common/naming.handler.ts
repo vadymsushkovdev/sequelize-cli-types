@@ -1,4 +1,4 @@
-export const endOfStringFromManyToOne = (word: string) => {
+export const endOfStringFromManyToOne = (word: string): string => {
   if (word.endsWith("ies")) {
     return word.substring(0, word.length - 3).concat("y");
   }
@@ -12,11 +12,11 @@ export const endOfStringFromManyToOne = (word: string) => {
   return word;
 };
 
-function format(i: number) {
+function format(i: number): string | number {
   return parseInt(String(i), 10) < 10 ? "0" + i : i;
 }
 
-export const dateOfCreatingFile = () => {
+export const dateOfCreatingFile = (): string => {
   const date = new Date();
 
   return [
@@ -29,7 +29,10 @@ export const dateOfCreatingFile = () => {
   ].join("");
 };
 
-export const migrationColumnBuilder = (name: string, parameter: string) => {
+export const migrationColumnBuilder = (
+  name: string,
+  parameter: string
+): string => {
   if (parameter === "str" || parameter === "string") {
     return (
       `\n      ${name}: {\n` + `        type: Sequelize.STRING,\n` + "      }"
@@ -49,7 +52,7 @@ export const migrationColumnBuilder = (name: string, parameter: string) => {
   throw new Error(`Unknown parameter ${parameter}`);
 };
 
-export const modelColumnBuilder = (name: string, parameter: string) => {
+export const modelColumnBuilder = (name: string, parameter: string): string => {
   if (parameter === "str" || parameter === "string") {
     return `\n  ${name}: {\n` + `    type: DataTypes.STRING\n` + "  }";
   }
@@ -66,7 +69,7 @@ export const modelColumnBuilder = (name: string, parameter: string) => {
 export const modelInterfaceColumnBuilder = (
   name: string,
   parameter: string
-) => {
+): string => {
   if (parameter === "str" || parameter === "string") {
     return `\n  ${name}: string`;
   }

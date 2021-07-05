@@ -3,7 +3,7 @@ import { pathConstant } from "@config/constants/path.constant";
 import { Sequelize } from "sequelize";
 import fs from "fs";
 
-export const umzug = () => {
+export const umzug = (): Umzug.Umzug => {
   if (!fs.existsSync(`${pathConstant.userDbPath}`)) {
     console.log(
       'Database directory does not initialized. Please, use "sqlz init" or "sqlz i"'

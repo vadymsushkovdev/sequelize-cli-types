@@ -89,7 +89,7 @@ class InitExecutor {
       );
     }
   }
-
+/*
   public async initSeeders() {
     try {
       fs.stat(`${pathConstant.userDbPath}`, async function (err) {
@@ -122,10 +122,11 @@ class InitExecutor {
       );
     }
   }
+  */
 }
 
 export const initExecutor = new InitExecutor();
-export const initialization = async () => {
+export const initialization = async (): Promise<void> => {
   await initExecutor.initConfig();
   await initExecutor.initMigrations();
   await initExecutor.initModels();

@@ -70,14 +70,6 @@ class GenerateExecutor {
       console.error(err);
     }
   }
-
-  public async generateSeed() {
-    try {
-
-    } catch (err) {
-      console.error(err);
-    }
-  }
 }
 
 export const generateExecutor = new GenerateExecutor();
