@@ -1,6 +1,6 @@
 # Sequelize CLI for TypeScript
 
-##Installation
+## Installation
 
 1) Install library "ts-sequelize-cli"
 ```bash
@@ -12,7 +12,7 @@ npm install --save-dev ts-sequelize-cli
 npx ts-sequelize-cli
 ```
 
-##Commands 
+## Commands 
 ```bash
 Usage: sqlz [options] [command]
 
