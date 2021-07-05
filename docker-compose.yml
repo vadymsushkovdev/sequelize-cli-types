@@ -1,0 +1,27 @@
+version: "3"
+volumes:
+  pgdata:
+  my-db:
+services:
+  postgres:
+    image: postgres:13
+    environment:
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_USER: postgres
+        POSTGRES_DB: db_development
+    restart: always
+    volumes:
+        - pgdata:/var/lib/postgresql/data
+    ports:
+        - 5432:5432
+
+  mysql:
+      image: mysql:5.7
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: db_development
+      restart: always
+      volumes:
+            - my-db:/var/lib/mysql
+      ports:
+        - 3306:3306
