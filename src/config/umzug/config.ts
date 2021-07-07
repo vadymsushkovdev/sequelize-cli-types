@@ -3,7 +3,7 @@ import { pathConstant } from "@config/constants/path.constant";
 import { Sequelize } from "sequelize";
 import fs from "fs";
 
-export const umzug = (): Umzug.Umzug => {
+export const umzug = async (): Promise<Umzug.Umzug> => {
   if (!fs.existsSync(`${pathConstant.userDbPath}`)) {
     console.log(
       'Database directory does not initialized. Please, use "sqlz init" or "sqlz i"'
@@ -35,10 +35,9 @@ export const umzug = (): Umzug.Umzug => {
 
   let sequelize;
 
-  const {
-    sequelizeConfig,
-    operatingMode,
-  } = require(`${pathConstant.userConfigPath}/config`);
+  const { sequelizeConfig, operatingMode } = await import(
+    `${pathConstant.userConfigPath}/config`
+  );
 
   if (operatingMode === "development") {
     sequelize = new Sequelize(sequelizeConfig.development);

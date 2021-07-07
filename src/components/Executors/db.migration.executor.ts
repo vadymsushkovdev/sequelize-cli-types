@@ -3,7 +3,8 @@ import { umzug } from "@config/umzug/config";
 class DbMigrationExecutor {
   public async up() {
     try {
-      await umzug().up();
+      await umzug().then((umzugCore) => umzugCore.up());
+
       console.log("All migrations performed successfully");
     } catch (err) {
       console.error(err);
@@ -12,7 +13,8 @@ class DbMigrationExecutor {
 
   public async down() {
     try {
-      await umzug().down();
+      await umzug().then((umzugCore) => umzugCore.down());
+
       console.log("All tables have been drops");
     } catch (err) {
       console.error(err);
@@ -21,7 +23,8 @@ class DbMigrationExecutor {
 
   public async specificDown(migration: Array<string>) {
     try {
-      await umzug().down(migration);
+      await umzug().then((umzugCore) => umzugCore.down(migration));
+
       console.log(`${migration} have been drops`);
     } catch (err) {
       console.error(err);
@@ -30,7 +33,7 @@ class DbMigrationExecutor {
 
   public async pending() {
     try {
-      console.log(await umzug().pending());
+      console.log(await umzug().then((umzugCore) => umzugCore.pending()));
     } catch (err) {
       console.error(err);
     }
@@ -38,7 +41,7 @@ class DbMigrationExecutor {
 
   public async executed() {
     try {
-      console.log(await umzug().executed());
+      console.log(await umzug().then((umzugCore) => umzugCore.executed()));
     } catch (err) {
       console.error(err);
     }
