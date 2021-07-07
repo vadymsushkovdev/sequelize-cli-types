@@ -1,5 +1,5 @@
 import * as fs from "fs-extra";
-import { pathConstant } from "@config/constants/path.constant";
+import { pathConstant } from "../constants/path.constant";
 
 export const logAction = async (action: string): Promise<void> => {
   await fs.appendFileSync(

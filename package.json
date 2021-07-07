@@ -1,10 +1,10 @@
 {
   "name": "ts-sequelize-cli",
-  "version": "0.1.0",
+  "version": "0.2.4",
   "description": "Sequelize CLI for TS",
   "author": "vadymsushkov",
-  "url" : "https://github.com/vadymsushkovdev/sequelize-cli-types",
-  "email" : "vadymsushkovdev@gmail.com",
+  "url": "https://github.com/vadymsushkovdev/sequelize-cli-types",
+  "email": "vadymsushkovdev@gmail.com",
   "keywords": [
     "migrate",
     "migration",
@@ -12,20 +12,23 @@
     "sequelize",
     "database"
   ],
+  "main": "dist/src/components/Commands/commands.js",
+  "types": "dist/src/components/Commands/commands.d.ts",
+  "prepublish": "tsc && npm link",
   "bin": {
-    "sqlz": "./src/components/Commands/commands.ts"
+    "sqlz": "dist/src/components/Commands/commands.js"
   },
   "scripts": {
     "build": "tsc --skipLibCheck",
-    "start": "ts-node ./src/components/Commands/initialization.commands.ts"
+    "start": "ts-node ./src/components/Commands/initialization.commands.js"
   },
   "files": [
+    "dist",
     "src"
   ],
   "dependencies": {
     "commander": "7.2.0",
     "fs-extra": "10.0.0",
-    "module-alias": "2.2.2",
     "mysql2": "latest",
     "path": "0.12.7",
     "pg": "latest",
@@ -33,10 +36,6 @@
     "sequelize": "6.6.2",
     "ts-node": "10.0.0",
     "umzug": "2.3.0"
-  },
-  "_moduleAliases": {
-    "@config": "./src/config",
-    "@components": "./src/components"
   },
   "devDependencies": {
     "@types/fs-extra": "9.0.11",

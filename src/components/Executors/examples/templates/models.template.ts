@@ -1,12 +1,12 @@
-import { endOfStringFromManyToOne } from "@components/Common/naming.handler";
+import { endOfStringFromManyToOne } from "../../../Common/naming.handler";
 import fs from "fs";
-import { pathConstant } from "@config/constants/path.constant";
+import { pathConstant } from "../../../../config/constants/path.constant";
 
 export const createModelFile = (
   tableName: string,
   parameters: Array<string>
 ) => {
-  const fileName: string = `${endOfStringFromManyToOne(
+  const fileName = `${endOfStringFromManyToOne(
     tableName.toLowerCase()
   )}.ts`;
   const modelCode: string =
@@ -14,15 +14,15 @@ export const createModelFile = (
     'import connection from ""; //Enter your sequelize connect to database\n' +
     `import { I${endOfStringFromManyToOne(
       tableName
-    )}Model } from \"./interfaces/${endOfStringFromManyToOne(
+    )}Model } from "./interfaces/${endOfStringFromManyToOne(
       tableName
-    ).toLowerCase()}.interface\";\n` +
+    ).toLowerCase()}.interface";\n` +
     "\n" +
     `export const ${endOfStringFromManyToOne(
       tableName
     )}Model = connection.define<I${endOfStringFromManyToOne(
       tableName
-    )}Model>(\"${tableName}\", {\n` +
+    )}Model>("${tableName}", {\n` +
     "  id: {\n" +
     `    type: DataTypes.INTEGER.UNSIGNED,\n` +
     "    autoIncrement: true,\n" +
@@ -46,7 +46,7 @@ export const createModelInterface = (
   tableName: string,
   parameters: Array<string>
 ) => {
-  const fileName: string = `${endOfStringFromManyToOne(
+  const fileName = `${endOfStringFromManyToOne(
     tableName.toLowerCase()
   )}.interface.ts`;
   const interfaceCode: string =

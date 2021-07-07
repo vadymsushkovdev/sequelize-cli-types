@@ -1,5 +1,5 @@
 import Umzug from "umzug";
-import { pathConstant } from "@config/constants/path.constant";
+import { pathConstant } from "..//constants/path.constant";
 import { Sequelize } from "sequelize";
 import fs from "fs";
 

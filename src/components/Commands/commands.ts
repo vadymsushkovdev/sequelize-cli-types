@@ -1,14 +1,13 @@
 #!/usr/bin/env ts-node
 
-import "module-alias/register";
 import { Command } from "commander";
 import {
   initExecutor,
   initialization,
-} from "@components/Executors/init.executor";
-import { showLogs } from "@config/logs/log.action";
-import { generateExecutor } from "@components/Executors/generate.executor";
-import { dbMigrationExecutor } from "@components/Executors/db.migration.executor";
+} from "../Executors/init.executor";
+import { showLogs } from "../../config/logs/log.action";
+import { generateExecutor } from "../Executors/generate.executor";
+import { dbMigrationExecutor } from "../Executors/db.migration.executor";
 
 const commander = new Command();
 

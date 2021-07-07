@@ -9,14 +9,10 @@
     "target": "es2018",
     "lib": ["es2020", "es2019", "es5", "es6"],
     "sourceMap": true,
-    "outDir": "./dist",
+    "outDir": "dist",
     "baseUrl": "./",
     "incremental": true,
     "strict": true,
     "esModuleInterop": true,
-    "paths": {
-      "@config/*": ["./src/config/*"],
-      "@components/*": ["./src/components/*"]
-    }
   }
 }

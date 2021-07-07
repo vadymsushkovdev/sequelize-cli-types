@@ -1,16 +1,16 @@
-import { createMigrationFile } from "@components/Executors/examples/templates/migrations.template";
-import { logAction } from "@config/logs/log.action";
-import { initializationMessages } from "@config/constants/logs.messages";
+import { createMigrationFile } from "./examples/templates/migrations.template";
+import { logAction } from "../../config/logs/log.action";
+import { initializationMessages } from "../../config/constants/logs.messages";
 import {
   endOfStringFromManyToOne,
   migrationColumnBuilder,
   modelColumnBuilder,
   modelInterfaceColumnBuilder,
-} from "@components/Common/naming.handler";
+} from "../Common/naming.handler";
 import {
   createModelFile,
   createModelInterface,
-} from "@components/Executors/examples/templates/models.template";
+} from "./examples/templates/models.template";
 
 class GenerateExecutor {
   public async generateMigration(tableName: string, parameters: Array<string>) {

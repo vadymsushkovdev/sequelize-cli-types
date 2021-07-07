@@ -1,15 +1,15 @@
 import fs from "fs";
-import { pathConstant } from "@config/constants/path.constant";
+import { pathConstant } from "../../../../config/constants/path.constant";
 import {
   dateOfCreatingFile,
   endOfStringFromManyToOne,
-} from "@components/Common/naming.handler";
+} from "../../../Common/naming.handler";
 
 export const createMigrationFile = (
   tableName: string,
   parameters: Array<string>
 ) => {
-  const fileName: string = `${dateOfCreatingFile()}-create-${endOfStringFromManyToOne(
+  const fileName = `${dateOfCreatingFile()}-create-${endOfStringFromManyToOne(
     tableName.toLowerCase()
   )}.ts`;
   const migrationCode: string =
