@@ -1,8 +1,8 @@
 {
   "name": "ts-sequelize-cli",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Sequelize CLI for TS",
-  "author": "Vadym Sushkov",
+  "author": "vadymsushkov",
   "url" : "https://github.com/vadymsushkovdev/sequelize-cli-types",
   "email" : "vadymsushkovdev@gmail.com",
   "keywords": [
