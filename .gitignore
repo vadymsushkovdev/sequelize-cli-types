@@ -4,3 +4,4 @@ build/
 dist/
 src/config/logs/log.file.txt
 /db
+/package-lock.json
