@@ -32,4 +32,4 @@ Commands:
   help [command]                                          display help for command
 ```
 ## Docs
-[How to use?](docs/howToUse.md)
+[How to use?](https://github.com/vadymsushkovdev/sequelize-cli-types/blob/main/docs/howToUse.md)
