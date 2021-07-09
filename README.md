@@ -2,17 +2,11 @@
 
 ## Installation
 
-1) Install library "ts-sequelize-cli"
 ```bash
 npm install --save-dev ts-sequelize-cli
 ```
 
-2) Let access for CLI
-```bash
-npx ts-sequelize-cli
-```
-
-## Commands 
+## Commands
 ```bash
 Usage: sqlz [options] [command]
 
@@ -37,3 +31,5 @@ Commands:
   logs|l                                                  Shows all logs of action CLI
   help [command]                                          display help for command
 ```
+## Docs
+[How to use?](docs/howToUse.md)
