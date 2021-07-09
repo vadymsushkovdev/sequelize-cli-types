@@ -1,4 +1,4 @@
-import { umzug } from "../../config/umzug/config";
+import { umzug } from "../../config/umzug/migration.config";
 
 class DbMigrationExecutor {
   public async up() {

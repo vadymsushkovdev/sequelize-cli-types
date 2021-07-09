@@ -1,5 +1,5 @@
 import { getSequelizeType } from "./getSequelizeType";
-import {getInterfaceType} from "./getInterfaceType";
+import { getInterfaceType } from "./getInterfaceType";
 
 export const migrationColumnBuilder = (
   name: string,
@@ -24,5 +24,5 @@ export const modelInterfaceColumnBuilder = (
   name: string,
   parameter: string
 ): string => {
-    return `\n  ${name}: ${getInterfaceType(parameter)}`;
+  return `\n  ${name}: ${getInterfaceType(parameter)}`;
 };

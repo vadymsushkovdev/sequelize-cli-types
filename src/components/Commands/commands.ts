@@ -1,10 +1,7 @@
 #!/usr/bin/env ts-node
 
 import { Command } from "commander";
-import {
-  initExecutor,
-  initialization,
-} from "../Executors/init.executor";
+import { initExecutor, initialization } from "../Executors/init.executor";
 import { showLogs } from "../../config/logs/log.action";
 import { generateExecutor } from "../Executors/generate.executor";
 import { dbMigrationExecutor } from "../Executors/db.migration.executor";

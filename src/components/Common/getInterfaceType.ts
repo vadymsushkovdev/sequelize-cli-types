@@ -2,47 +2,34 @@ import {
   arrayInterfaceIds,
   bigintInterfaceIds,
   booleanInterfaceIds,
-  dateInterfaceIds, jsonInterfaceIds,
+  dateInterfaceIds,
+  jsonInterfaceIds,
   numberInterfaceIds,
   stringInterfaceIds,
-  typeId
+  typeId,
 } from "./common.constants";
 
 export const getInterfaceType = (parameter: string) => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   if (stringInterfaceIds.includes(typeId[parameter])) {
-    return 'string';
+    return "string";
   }
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   if (numberInterfaceIds.includes(typeId[parameter])) {
-    return 'number';
+    return "number";
   }
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   if (booleanInterfaceIds.includes(typeId[parameter])) {
-    return 'boolean';
+    return "boolean";
   }
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   if (dateInterfaceIds.includes(typeId[parameter])) {
-    return 'Date';
+    return "Date";
   }
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   if (bigintInterfaceIds.includes(typeId[parameter])) {
-    return 'bigint';
+    return "bigint";
   }
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   if (arrayInterfaceIds.includes(typeId[parameter])) {
-    return 'Array';
+    return "Array";
   }
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   if (jsonInterfaceIds.includes(typeId[parameter])) {
-    return 'JSON';
+    return "JSON";
   }
-   throw new Error(`Unknown parameter ${parameter}`)
-}
+  throw new Error(`Unknown parameter ${parameter}`);
+};

@@ -29,10 +29,7 @@
   "dependencies": {
     "commander": "7.2.0",
     "fs-extra": "10.0.0",
-    "mysql2": "latest",
     "path": "0.12.7",
-    "pg": "latest",
-    "pg-hstore": "latest",
     "sequelize": "6.6.2",
     "ts-node": "10.0.0",
     "umzug": "2.3.0"
@@ -48,6 +45,9 @@
     "eslint-config-prettier": "6.12.0",
     "eslint-plugin-import": "2.22.1",
     "prettier": "2.3.1",
+    "mysql2": "latest",
+    "pg": "latest",
+    "pg-hstore": "latest",
     "typescript": "4.3.2"
   },
   "engines": {

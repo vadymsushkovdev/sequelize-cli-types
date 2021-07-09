@@ -1,12 +1,13 @@
 import fs from "fs";
 import { pathConstant } from "../../../config/constants/path.constant";
-import {endOfStringFromManyToOne} from "../../Common/naming.handler";
+import { endOfStringFromManyToOne } from "../../Common/naming.handler";
 
 export const createConfigFile = async () => {
   const configCode: string =
     'import { ISequelizeConfig, Mode } from "./interfaces/interface.config"\n' +
     `\n` +
-    `export const sequelizeConfig: ISequelizeConfig =` +` {\n`+
+    `export const sequelizeConfig: ISequelizeConfig =` +
+    ` {\n` +
     `  development: {\n` +
     `    username: "postgres",\n` +
     `    password: "postgres",\n` +
@@ -30,7 +31,7 @@ export const createConfigFile = async () => {
     `  },\n` +
     `};\n` +
     `\n` +
-    `export const operatingMode: Mode = "development";`
+    `export const operatingMode: Mode = "development";`;
 
   await fs.writeFile(
     `${pathConstant.userConfigPath}/config.ts`,
@@ -75,9 +76,9 @@ export const createConfigInterface = async () => {
     "  };\n" +
     "}\n" +
     "\n" +
-    "type Dialect = \"postgres\" | \"mysql\";\n" +
+    'type Dialect = "postgres" | "mysql";\n' +
     "\n" +
-    "export type Mode = \"development\" | \"production\" | \"test\";\n";
+    'export type Mode = "development" | "production" | "test";\n';
 
   await fs.writeFile(
     `${pathConstant.userConfigPath}/interfaces/interface.config.ts`,
@@ -89,4 +90,3 @@ export const createConfigInterface = async () => {
     }
   );
 };
-
