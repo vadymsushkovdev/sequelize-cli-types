@@ -1,9 +1,9 @@
 import fs from "fs";
-import { pathConstant } from "../../../../config/constants/path.constant";
+import { pathConstant } from "../../../config/constants/path.constant";
 import {
   dateOfCreatingFile,
   endOfStringFromManyToOne,
-} from "../../../Common/naming.handler";
+} from "../../Common/naming.handler";
 
 export const createMigrationFile = (
   tableName: string,

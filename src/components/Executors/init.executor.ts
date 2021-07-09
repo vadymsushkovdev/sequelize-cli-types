@@ -2,20 +2,42 @@ import * as fs from "fs-extra";
 import { pathConstant } from "../../config/constants/path.constant";
 import { logAction } from "../../config/logs/log.action";
 import { initializationMessages } from "../../config/constants/logs.messages";
+import {
+  createConfigFile,
+  createConfigInterface,
+} from "./templates/config.template";
 
 class InitExecutor {
   public async initConfig() {
     try {
-      await fs.copy(
-        `${pathConstant.configExamplePath}`,
-        pathConstant.userDbPath
-      );
+      fs.stat(`${pathConstant.userDbPath}`, async function (err) {
+        if (!err) {
+          await fs.mkdir(`${pathConstant.userConfigPath}`);
+          await fs.mkdir(`${pathConstant.userConfigPath}/interfaces`);
 
-      console.log(
-        `The config file added by directory ${pathConstant.userDbPath}/config. Set the file using your parameters.`
-      );
+          await createConfigInterface();
+          await createConfigFile();
 
-      await logAction(initializationMessages.successMessages.config);
+          console.log(
+            `The config file added by directory ${pathConstant.userDbPath}/config. Set the file using your parameters.`
+          );
+
+          await logAction(initializationMessages.successMessages.config);
+        } else if (err.code === "ENOENT") {
+          await fs.mkdir(`${pathConstant.userDbPath}`);
+          await fs.mkdir(`${pathConstant.userConfigPath}`);
+          await fs.mkdir(`${pathConstant.userConfigPath}/interfaces`);
+
+          await createConfigInterface();
+          await createConfigFile();
+
+          console.log(
+            `The config file added by directory ${pathConstant.userDbPath}/config. Set the file using your parameters.`
+          );
+
+          await logAction(initializationMessages.successMessages.config);
+        }
+      });
     } catch (err) {
       console.error(err);
 
@@ -89,7 +111,7 @@ class InitExecutor {
       );
     }
   }
-/*
+  /*
   public async initSeeders() {
     try {
       fs.stat(`${pathConstant.userDbPath}`, async function (err) {
@@ -127,6 +149,7 @@ class InitExecutor {
 
 export const initExecutor = new InitExecutor();
 export const initialization = async (): Promise<void> => {
+  await fs.mkdir(`${pathConstant.userDbPath}`);
   await initExecutor.initConfig();
   await initExecutor.initMigrations();
   await initExecutor.initModels();

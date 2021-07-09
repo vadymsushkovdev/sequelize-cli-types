@@ -1,4 +1,4 @@
-import { createMigrationFile } from "./examples/templates/migrations.template";
+import { createMigrationFile } from "./templates/migrations.template";
 import { logAction } from "../../config/logs/log.action";
 import { initializationMessages } from "../../config/constants/logs.messages";
 import {
@@ -10,7 +10,7 @@ import {
 import {
   createModelFile,
   createModelInterface,
-} from "./examples/templates/models.template";
+} from "./templates/models.template";
 
 class GenerateExecutor {
   public async generateMigration(tableName: string, parameters: Array<string>) {
