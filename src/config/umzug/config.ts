@@ -25,13 +25,13 @@ export const umzug = async (): Promise<Umzug.Umzug> => {
 
     process.exit(9);
   }
-  if (!fs.existsSync(`${pathConstant.userSeederPath}`)) {
-    console.log(
-      'Seeders of database does not initialized. Please, use "sqlz init:seeders" or "sqlz i:see"'
-    );
-
-    process.exit(9);
-  }
+  //if (!fs.existsSync(`${pathConstant.userSeederPath}`)) {
+  //  console.log(
+  //    'Seeders of database does not initialized. Please, use "sqlz init:seeders" or "sqlz i:see"'
+  //  );
+  //
+   // process.exit(9);
+  //}
 
   let sequelize;
 

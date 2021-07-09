@@ -1,6 +1,6 @@
-import { endOfStringFromManyToOne } from "../../../Common/naming.handler";
+import { endOfStringFromManyToOne } from "../../Common/naming.handler";
 import fs from "fs";
-import { pathConstant } from "../../../../config/constants/path.constant";
+import { pathConstant } from "../../../config/constants/path.constant";
 
 export const createModelFile = (
   tableName: string,
