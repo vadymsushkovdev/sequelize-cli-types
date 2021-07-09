@@ -30,7 +30,7 @@ export const umzug = async (): Promise<Umzug.Umzug> => {
   //    'Seeders of database does not initialized. Please, use "sqlz init:seeders" or "sqlz i:see"'
   //  );
   //
-   // process.exit(9);
+  // process.exit(9);
   //}
 
   let sequelize;
@@ -47,7 +47,7 @@ export const umzug = async (): Promise<Umzug.Umzug> => {
     sequelize = new Sequelize(sequelizeConfig.test);
   } else {
     console.log(
-      '"operatingMod" must be "development" or "production" or "test"'
+      '"operatingMode" must be "development" or "production" or "test"'
     );
 
     process.exit(9);

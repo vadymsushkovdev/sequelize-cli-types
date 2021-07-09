@@ -6,9 +6,7 @@ export const createModelFile = (
   tableName: string,
   parameters: Array<string>
 ) => {
-  const fileName = `${endOfStringFromManyToOne(
-    tableName.toLowerCase()
-  )}.ts`;
+  const fileName = `${endOfStringFromManyToOne(tableName.toLowerCase())}.ts`;
   const modelCode: string =
     'import { DataTypes } from "sequelize";\n' +
     'import connection from ""; //Enter your sequelize connect to database\n' +

@@ -14,13 +14,13 @@ This will create directories
 └── db
     ├── config
     │   ├── interfaces
-    │   │   └── interface.config.ts
-    │   └── config.ts
+    │   │   └── interface.migration.config.ts
+    │   └── migration.config.ts
     ├── migrations
     └── models
 ```
 ## 2) Configuration setup
-In the ./db/config directory you can find <config.ts>. This is the configuration file for connecting to your database. So, just use your settings to access the database and select the usage mode
+In the ./db/config directory you can find <migration.config.ts>. This is the configuration file for connecting to your database. So, just use your settings to access the database and select the usage mode
 ```bash
 import { ISequelizeConfig, Mode } from "./interfaces/interface.config";
 
@@ -50,7 +50,7 @@ export const sequelizeConfig: ISequelizeConfig = {
 
 export const operatingMode: Mode = "development";
 ```
-### Do not change the interface.config.ts!
+### Do not change the interface.migration.config.ts!
 
 ## 3) Create migration 
 Now you can create your migration file. 
