@@ -31,5 +31,6 @@ export const getInterfaceType = (parameter: string) => {
   if (jsonInterfaceIds.includes(typeId[parameter])) {
     return "JSON";
   }
+
   throw new Error(`Unknown parameter ${parameter}`);
 };

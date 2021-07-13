@@ -13,8 +13,6 @@ enum columnSequelizeType {
 }
 
 export const getSequelizeType = (parameter: string) => {
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
   const sequelizeType: string = columnSequelizeType[typeId[parameter]];
 
   if (sequelizeType) {

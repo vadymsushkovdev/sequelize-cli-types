@@ -3,8 +3,7 @@ import { pathConstant } from "../../config/constants/path.constant";
 import { logAction } from "../../config/logs/log.action";
 import { initializationMessages } from "../../config/constants/logs.messages";
 import {
-  createConfigFile,
-  createConfigInterface,
+  createConfigFile
 } from "./templates/config.template";
 
 class InitExecutor {
@@ -13,9 +12,7 @@ class InitExecutor {
       fs.stat(`${pathConstant.userDbPath}`, async function (err) {
         if (!err) {
           await fs.mkdir(`${pathConstant.userConfigPath}`);
-          await fs.mkdir(`${pathConstant.userConfigPath}/interfaces`);
 
-          await createConfigInterface();
           await createConfigFile();
 
           console.log(
@@ -26,9 +23,7 @@ class InitExecutor {
         } else if (err.code === "ENOENT") {
           await fs.mkdir(`${pathConstant.userDbPath}`);
           await fs.mkdir(`${pathConstant.userConfigPath}`);
-          await fs.mkdir(`${pathConstant.userConfigPath}/interfaces`);
 
-          await createConfigInterface();
           await createConfigFile();
 
           console.log(
@@ -111,7 +106,7 @@ class InitExecutor {
       );
     }
   }
-  /*
+
   public async initSeeders() {
     try {
       fs.stat(`${pathConstant.userDbPath}`, async function (err) {
@@ -144,7 +139,6 @@ class InitExecutor {
       );
     }
   }
-  */
 }
 
 export const initExecutor = new InitExecutor();
@@ -153,5 +147,5 @@ export const initialization = async (): Promise<void> => {
   await initExecutor.initConfig();
   await initExecutor.initMigrations();
   await initExecutor.initModels();
-  // await initExecutor.initSeeders();
+  await initExecutor.initSeeders();
 };

@@ -1,14 +1,14 @@
 import { umzug } from "../../config/umzug/umzug.config";
 import { pathConstant } from "../../config/constants/path.constant";
 
-class DbMigrationExecutor {
+class DbSeedsExecutor {
   public async up() {
     try {
-      await umzug(`${pathConstant.userMigrationPath}`).then((umzugCore) =>
+      await umzug(`${pathConstant.userSeederPath}`).then((umzugCore) =>
         umzugCore.up()
       );
 
-      console.log("All migrations performed successfully");
+      console.log("All seeds performed successfully");
     } catch (err) {
       console.error(err);
     }
@@ -16,11 +16,11 @@ class DbMigrationExecutor {
 
   public async down() {
     try {
-      await umzug(`${pathConstant.userMigrationPath}`).then((umzugCore) =>
+      await umzug(`${pathConstant.userSeederPath}`).then((umzugCore) =>
         umzugCore.down()
       );
 
-      console.log("All tables have been drops");
+      console.log("All seeds is dropped");
     } catch (err) {
       console.error(err);
     }
@@ -28,11 +28,11 @@ class DbMigrationExecutor {
 
   public async specificDown(migration: Array<string>) {
     try {
-      await umzug(`${pathConstant.userMigrationPath}`).then((umzugCore) =>
+      await umzug(`${pathConstant.userSeederPath}`).then((umzugCore) =>
         umzugCore.down(migration)
       );
 
-      console.log(`${migration} have been drops`);
+      console.log(`${migration} is dropped`);
     } catch (err) {
       console.error(err);
     }
@@ -63,4 +63,4 @@ class DbMigrationExecutor {
   }
 }
 
-export const dbMigrationExecutor = new DbMigrationExecutor();
+export const dbSeedsExecutor = new DbSeedsExecutor();

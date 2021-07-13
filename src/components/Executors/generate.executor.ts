@@ -11,6 +11,7 @@ import {
   modelColumnBuilder,
   modelInterfaceColumnBuilder,
 } from "../Common/columnBuilder";
+import { createSeedFile } from "./templates/seed.template";
 
 class GenerateExecutor {
   public async generateMigration(tableName: string, parameters: Array<string>) {
@@ -68,6 +69,32 @@ class GenerateExecutor {
       );
     } catch (err) {
       console.error(err);
+    }
+  }
+
+  public async generateSeed(tableName: string) {
+    try {
+      createSeedFile(tableName);
+
+      console.log(
+        `The seed file ${endOfStringFromManyToOne(
+          tableName.toLowerCase()
+        )} is created. Status: Pending`
+      );
+
+      await logAction(
+        initializationMessages.successMessages.migrationGeneration +
+          ` File: ${endOfStringFromManyToOne(tableName.toLowerCase())}`
+      );
+    } catch (err) {
+      console.error(err);
+
+      await logAction(
+        initializationMessages.errorMessages.migrationGeneration +
+          ` File: ${endOfStringFromManyToOne(tableName.toLowerCase())}` +
+          " Message: " +
+          err.message
+      );
     }
   }
 }

@@ -14,15 +14,15 @@ This will create directories
 └── db
     ├── config
     │   ├── interfaces
-    │   │   └── interface.migration.config.ts
-    │   └── migration.config.ts
+    │   │   └── interface.config.ts
+    │   └── config.ts
     ├── migrations
     └── models
 ```
 ## 2) Configuration setup
-In the ./db/config directory you can find <migration.config.ts>. This is the configuration file for connecting to your database. So, just use your settings to access the database and select the usage mode
+In the ./db/config directory you can find <config.ts>. This is the configuration file for connecting to your database. So, just use your settings to access the database and select the usage mode
 ```bash
-import { ISequelizeConfig, Mode } from "./interfaces/interface.config";
+import { ISequelizeConfig, Mode } from "ts-sequelize-cli";
 
 export const sequelizeConfig: ISequelizeConfig = {
   development: {
@@ -50,7 +50,6 @@ export const sequelizeConfig: ISequelizeConfig = {
 
 export const operatingMode: Mode = "development";
 ```
-### Do not change the interface.migration.config.ts!
 
 ## 3) Create migration 
 Now you can create your migration file. 
@@ -88,20 +87,11 @@ export default {
 ```
 Send your migration to database
 ```bash
-sqlz db:migrate
+sqlz db:migrate:up
 ```
 or
 ```bash
-sqlz db:mig
-```
-
-In case you need to send certain migrations, use the command 
-```bash
-sqlz db:smigrate <filename>
-```
-or
-```bash
-sqlz db:smig <filename>
+sqlz db:mig:u
 ```
 
 ## 4) Create model 
@@ -132,7 +122,7 @@ export const PostModel = connection.define<IPostModel>("Posts", {
   }
 });
 ```
-Set up your model, add validation and dependencies to other models.For more information on how to set up a model, see the official [Sequelize](https://sequelize.org/master/manual/typescript.html) documentation for TypeScript. Also, you need to add your own connection. You can use your already connection or command:
+Set up your model, add validation and dependencies to other models. For more information on how to set up a model, see the official [Sequelize](https://sequelize.org/master/manual/typescript.html) documentation for TypeScript. Also, you need to add your own connection. You can use your already connection or command:
 ```bash
 sqlz connection:build
 ```
