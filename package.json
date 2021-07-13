@@ -1,6 +1,6 @@
 {
   "name": "ts-sequelize-cli",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Sequelize CLI for TS",
   "author": "vadymsushkov",
   "url": "https://github.com/vadymsushkovdev/sequelize-cli-types",
@@ -50,6 +50,10 @@
     "pg-hstore": "latest",
     "typescript": "4.3.2"
   },
+  "bugs": {
+    "url": "https://github.com/vadymsushkovdev/sequelize-cli-types/issues"
+  },
+  "homepage": "https://github.com/vadymsushkovdev/sequelize-cli-types",
   "engines": {
     "node": ">=12.20.0"
   },

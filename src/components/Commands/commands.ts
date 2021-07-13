@@ -5,6 +5,7 @@ import { initExecutor, initialization } from "../Executors/init.executor";
 import { showLogs } from "../../config/logs/log.action";
 import { generateExecutor } from "../Executors/generate.executor";
 import { dbMigrationExecutor } from "../Executors/db.migration.executor";
+import {dbSeedsExecutor} from "../Executors/db.seeds.executor";
 
 const commander = new Command();
 
@@ -30,13 +31,12 @@ commander
   .alias("i:mod")
   .description("Initialization CLI models into the project")
   .action(initExecutor.initModels);
-/*
 commander
-  .command("init:seeders")
+  .command("init:seeds")
   .alias("i:see")
   .description("Initialization CLI seeders into the project")
   .action(initExecutor.initSeeders);
-*/
+
 
 commander
   .command("migration:generate <tableName> <parameters...>")
@@ -52,39 +52,58 @@ commander
   .action((modelName, parameters) =>
     generateExecutor.generateModel(modelName, parameters)
   );
-/*
 commander
-  .command("seed:generate <seedName> <parameters...>")
+  .command("seed:generate <seedName>")
   .alias("see:gen")
   .description("Generation a new seed file into the project")
-  .action(generateExecutor.generateSeed);
-*/
+  .action((seedName) => generateExecutor.generateSeed(seedName));
 
 commander
-  .command("db:migrate")
-  .alias("db:mig")
+  .command("db:migrate:up")
+  .alias("db:mig:u")
   .description("Migrate all pending migration files")
   .action(dbMigrationExecutor.up);
 commander
-  .command("db:down")
-  .alias("db:d")
+  .command("db:mig:down")
+  .alias("db:mig:d")
   .description("Drop all database")
   .action(dbMigrationExecutor.down);
 commander
-  .command("db:specificdown <parameters...>")
-  .alias("db:sd")
-  .description("Drop one specific migration file")
+  .command("db:migrate:sdown <parameters...>")
+  .alias("db:mig:sd")
+  .description("Drop specific migration files")
   .action((parameters) => dbMigrationExecutor.specificDown(parameters));
 commander
-  .command("db:pending")
-  .alias("db:p")
+  .command("db:migrate:pending")
+  .alias("db:mig:p")
   .description("Check all migration files that not executed")
   .action(dbMigrationExecutor.pending);
 commander
-  .command("db:executed")
-  .alias("db:e")
+  .command("db:migrate:executed")
+  .alias("db:mig:e")
   .description("Check all migration files that executed")
   .action(dbMigrationExecutor.executed);
+
+commander
+  .command("db:seed:up")
+  .alias("db:s:u")
+  .description("Migrate all pending seed files")
+  .action(dbSeedsExecutor.up);
+commander
+  .command("db:seed:down")
+  .alias("db:s:d")
+  .description("Drop all seed files")
+  .action(dbSeedsExecutor.down);
+commander
+  .command("db:seed:pending")
+  .alias("db:s:p")
+  .description("Check all seed files that not executed")
+  .action(dbSeedsExecutor.pending);
+commander
+  .command("db:migrate:executed")
+  .alias("db:s:e")
+  .description("Check all seed files that executed")
+  .action(dbSeedsExecutor.executed);
 
 commander
   .command("logs")
