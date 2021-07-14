@@ -64,7 +64,7 @@ commander
   .description("Migrate all pending migration files")
   .action(dbMigrationExecutor.up);
 commander
-  .command("db:mig:down")
+  .command("db:migrate:down")
   .alias("db:mig:d")
   .description("Drop all database")
   .action(dbMigrationExecutor.down);
@@ -100,7 +100,7 @@ commander
   .description("Check all seed files that not executed")
   .action(dbSeedsExecutor.pending);
 commander
-  .command("db:migrate:executed")
+  .command("db:seed:executed")
   .alias("db:s:e")
   .description("Check all seed files that executed")
   .action(dbSeedsExecutor.executed);
